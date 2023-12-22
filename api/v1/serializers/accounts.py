@@ -88,3 +88,4 @@ class CreateNewPasswordSerializer(serializers.Serializer):
         if password != password_confirmation:
             raise serializers.ValidationError("Пароли не совпадают")
         return attrs
+

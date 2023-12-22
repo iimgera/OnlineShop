@@ -35,7 +35,7 @@ class RegistrationView(APIView):
             send_mail(
                 'Online-shop',
                 'Вы успешно зарегистрировались!',
-
+                'from@example.com',
                 [user.email],
                 fail_silently=False,
             )

@@ -46,8 +46,14 @@ class User(AbstractUser):
         max_length=16, verbose_name='Номер телефона',
         unique=True, blank=True, null=True
     )
-    groups = models.ManyToManyField(Group, related_name='custom_user')
-    user_permissions = models.ManyToManyField(Permission, related_name='custom_user')
+    groups = models.ManyToManyField(
+        Group, related_name='custom_user',
+        blank=True
+    )
+    user_permissions = models.ManyToManyField(
+        Permission, related_name='custom_user',
+        blank=True
+    )
     otp_reset = models.CharField(max_length=6, blank=True, null=True)
     otp_reset_created_at = models.DateTimeField(blank=True, null=True)
 

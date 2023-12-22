@@ -32,7 +32,7 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='redoc'),
     path('api/v1/', include('apps.accounts.urls')),
-    path('api/v1/', include('apps.products.urls')),
+    path('api/v1/', include('apps.catalog.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

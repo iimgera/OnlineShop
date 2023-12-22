@@ -3,5 +3,5 @@ from api.v1.models.accounts import User
 
 
 @admin.register(User)
-class CategoryAdmin(admin.ModelAdmin):
+class UserAdmin(admin.ModelAdmin):
     pass
