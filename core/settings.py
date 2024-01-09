@@ -5,7 +5,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+CART_SESSION_ID = 'cart '
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -36,12 +36,14 @@ INSTALLED_APPS = [
     'drf_yasg',
     'django_filters',
     'corsheaders',
+    'debug_toolbar',
 
     'apps.accounts',
     'apps.catalog',
     'apps.orders',
-
+    'apps.cart',
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -53,7 +55,16 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'allauth.account.middleware.AccountMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
 ]
+
+if DEBUG:
+    INTERNAL_IPS = ['127.0.0.1']
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': lambda request: True,
+    }
+
 
 ROOT_URLCONF = 'core.urls'
 

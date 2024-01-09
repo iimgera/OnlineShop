@@ -26,6 +26,8 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
+if settings.DEBUG:
+    import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,6 +35,9 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='redoc'),
     path('api/v1/', include('apps.accounts.urls')),
     path('api/v1/', include('apps.catalog.urls')),
+    path('api/v1/', include('apps.cart.urls')),
+    path('__debug__/', include(debug_toolbar.urls)),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()
